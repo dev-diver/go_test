@@ -28,6 +28,10 @@ func SumAllTails(numbersToSum ...[]int) []int {
 	result := make([]int, length)
 
 	for i, numbers := range numbersToSum {
+		if len(numbers) == 0 {
+			result[i] = 0
+			continue
+		}
 		tails := numbers[1:]
 		result[i] = Sum(tails)
 	}
