@@ -16,11 +16,7 @@ func SumAll(numbersToSum ...[]int) []int {
 	result := make([]int, length)
 
 	for i, numbers := range numbersToSum {
-		s := 0
-		for _, num := range numbers {
-			s += num
-		}
-		result[i] = s
+		result[i] = Sum(numbers)
 	}
 
 	return result
