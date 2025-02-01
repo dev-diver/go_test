@@ -16,3 +16,14 @@ func TestSum(t *testing.T) {
 	})
 
 }
+
+func TestSumAll(t *testing.T) {
+
+	got := SumAll([]int{1, 2}, []int{3, 4})
+	want := []int{3, 7}
+
+	if got != want {
+		t.Errorf("got %v want %v given", got, want)
+	}
+
+}
