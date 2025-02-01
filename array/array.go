@@ -9,3 +9,7 @@ func Sum(arr []int) int {
 
 	return s
 }
+
+func SumAll(numbersToSum ...[]int) []int {
+	return []int{}
+}
