@@ -1,6 +1,9 @@
 package pointers
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestWallet(t *testing.T) {
 
@@ -9,6 +12,8 @@ func TestWallet(t *testing.T) {
 
 	got := wallet.Balance()
 	want := 10
+
+	fmt.Printf("address of wallet in test is %v\n", &wallet.balance)
 
 	if got != want {
 		t.Errorf("got %d want %d", got, want)
