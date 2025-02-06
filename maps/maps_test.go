@@ -69,9 +69,10 @@ func TestUpdate(t *testing.T) {
 func TestDelete(t *testing.T) {
 	word := "test"
 	dictionary := Dictionary{word: "test definition"}
-	dictionary.Delete(word)
+	err := dictionary.Delete(word)
+	assertError(t, err, nil)
 
-	_, err := dictionary.Search(word)
+	_, err = dictionary.Search(word)
 	assertError(t, err, ErrNotFound)
 }
 
