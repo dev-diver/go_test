@@ -10,6 +10,12 @@ import (
 const finalWorld = "Go!"
 const countdonwStart = 3
 
+type DefaultSleeper struct{}
+
+func (d *DefaultSleeper) Sleep() {
+	time.Sleep(1 * time.Second)
+}
+
 type Sleeper interface {
 	Sleep()
 }
@@ -22,11 +28,21 @@ func (s *SpySleeper) Sleep() {
 	s.Calls++
 }
 
-type DefaultSleeper struct{}
-
-func (d *DefaultSleeper) Sleep() {
-	time.Sleep(1 * time.Second)
+type SpyCountdownOperations struct {
+	Calls []string
 }
+
+func (s *SpyCountdownOperations) Sleep() {
+	s.Calls = append(s.Calls, sleep)
+}
+
+func (s *SpyCountdownOperations) Write(p []byte) (n int, err error) {
+	s.Calls = append(s.Calls, write)
+	return
+}
+
+const write = "write"
+const sleep = "sleep"
 
 func Countdown(w io.Writer, sleeper Sleeper) {
 	for i := countdonwStart; i > 0; i-- {
