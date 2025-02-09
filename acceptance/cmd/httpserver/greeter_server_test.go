@@ -16,8 +16,8 @@ func TestGreeterServer(t *testing.T) {
 
 	req := testcontainers.ContainerRequest{
 		FromDockerfile: testcontainers.FromDockerfile{
-			Context:    "../../.",
-			Dockerfile: "./cmd/httpserver/Dockerfile",
+			Context:    "../../../.",
+			Dockerfile: "./acceptance/cmd/httpserver/Dockerfile",
 			// set to false if you want less spam, but this is helpful if you're having troubles
 			PrintBuildLog: true,
 		},
